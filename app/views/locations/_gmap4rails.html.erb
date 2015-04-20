@@ -1,0 +1,120 @@
+
+<div id="map" style='width: 800px;'> 
+  <div id="geolocation" style='width: 800px; height: 400px;'></div>
+</div>
+
+ <script type="text/javascript">
+
+       var InfoBoxBuilder;
+  var __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) {
+    for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; }
+    function ctor() { this.constructor = child; }
+    ctor.prototype = parent.prototype;
+    child.prototype = new ctor;
+    child.__super__ = parent.prototype;
+    return child;
+  };
+  InfoBoxBuilder = (function() {
+    __extends(InfoBoxBuilder, Gmaps.Google.Builders.Marker);
+    function InfoBoxBuilder() {
+      InfoBoxBuilder.__super__.constructor.apply(this, arguments);
+    }
+    InfoBoxBuilder.prototype.create_infowindow = function() {
+      var boxText;
+      if (!_.isString(this.args.infowindow)) {
+        return null;
+      }
+      boxText = document.createElement("div");
+      boxText.setAttribute("class", 'yellow');
+      boxText.innerHTML = this.args.infowindow;
+      return this.infowindow = new InfoBox(this.infobox(boxText));
+    };
+    InfoBoxBuilder.prototype.infobox = function(boxText) {
+      return {
+        content: boxText,
+        boxStyle: {
+          border: "3px solid black",
+          fontSize: "9pt",
+          opacity: 0.75,
+          width: "350px",
+          background: "#00ff00"
+        }
+      };
+    };
+    return InfoBoxBuilder;
+  })();
+
+
+    handler = Gmaps.build('Google', { builders: { Marker: InfoBoxBuilder} });
+    handler.buildMap({ provider: {}, internal: {id: 'geolocation'}}, function(){
+
+      var json_array = <%=raw @hash.to_json %>;
+
+      var markers = handler.addMarkers(json_array);
+
+      _.each(json_array, function(json, index){
+        json.marker = markers[index];
+      });
+
+      createSidebar(json_array);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+        
+    });
+
+
+    function createSidebarLi(json){
+      return ('<li class="active sectionLevel list-unstyled"><div class="row clearfix"><a>' + json.address + '</a></div></li>');
+    };
+
+    function bindLiToMarker($li, marker){
+      $li.on('click', function(){
+        marker.setMap(handler.getMap());
+        marker.panTo();
+        google.maps.event.trigger(marker.getServiceObject(), 'click');
+      })
+    };
+
+    function createSidebar(json_array){
+      _.each(json_array, function(json){
+        var $li = $( createSidebarLi(json) );
+        $li.appendTo('#sidebar_container');
+        bindLiToMarker($li, json.marker);
+        bindLiToMarkerMouseOver($li, json.marker);
+        bindLiToMarkerMouseOut($li, json.marker);
+      });
+
+
+    function bindLiToMarkerMouseOver($li, marker){
+      $li.on('mouseover', function(){
+        marker.setMap(handler.getMap());
+        marker.panTo();
+        marker.serviceObject.setIcon(pinIcon);
+      });
+    };
+
+    function bindLiToMarkerMouseOut($li, marker){
+      $li.on('mouseout', function(){
+        marker.setMap(handler.getMap());
+        marker.panTo(); 
+        marker.serviceObject.setIcon();
+      });
+    };
+
+  
+    var pinIcon = {
+      url: "/assets/marker_icon.png",
+      width: "80px",
+      height: "80px",
+      //size: new google.maps.Size(50, 80),
+      // origin: new google.maps.Point(0,0),
+      //scaledSize: new google.maps.Size(50, 50)
+      //scale: 10,
+      fillColor: "#00F"
+     // fillOpacity: 0.8,
+     // strokeWeight: 1
+    };
+
+    };
+
+</script>

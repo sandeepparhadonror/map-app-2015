@@ -1,0 +1,50 @@
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-4">
+      <h1> Listing users <small> <em>Location</em></small> </h1>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <%= render partial: 'tables' ,  object: @locations , as: 'locations'  %>
+</div>
+
+<br />
+
+<%= link_to 'Please Try New Location', new_location_path , :class => "btn btn-primary"%>
+
+<hr>
+<%= form_tag({ controller: "locations", action: "index"} , method: :get, remote: :true, :class => "form-inline", :id => "form_reset") do %>
+  <div class="form-group">
+    <label for="address">Adress : </label>
+    <%= text_field_tag :address, params[:address], :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label for="distance">Distance Area : </label>
+    <%= text_field_tag :distance, params[:distance], :class => "form-control", :placeholder => "distance in Km" %>
+  </div>
+  
+  <%= submit_tag "Search" , :class =>"btn btn-primary", :id => "button_reset" %>
+<% end %>
+
+<br><hr>
+
+<div class="row">
+
+  <div class="col-md-8">
+    <%= render partial: 'gmap4rails' %> 
+  </div>
+  <p class="text-center col-md-4"> The List of Location</p>
+  <div id='sidebar_container' class="col-md-4 text-center"> 
+  </div>
+
+</div>
+
+
+
+

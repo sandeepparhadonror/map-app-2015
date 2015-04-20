@@ -1,0 +1,10 @@
+Near_Search  : <%= p @search.inspect  %>
+<hr>
+search_lOCATION : <%= p @geo.inspect %><hr>
+
+
+<hr>
+<% @search.each do |ad|  %>
+  <%= ad.address%><br>
+  <% end %>
+

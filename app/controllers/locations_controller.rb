@@ -1,0 +1,122 @@
+class LocationsController < ApplicationController
+  # GET /users
+  # GET /users.json 
+
+  def index
+    # if user enter location search near location w.r.t user location
+    if params[:address].present?
+      @locations = Location.near(params[:address], params[:distance], :units => :km)
+      @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
+        marker.lat location.latitude
+        marker.lng location.longitude
+        marker.infowindow render_to_string(:partial => "infowindow", :locals => { :object => location})
+        marker.json({ :address => location.address.split(',').first })
+      end
+      respond_to do |format|
+        format.html # show.html.erb
+        format.js
+      end
+    else
+      # intially the 
+      @locations = Location.all
+      @hash = Gmaps4rails.build_markers(@locations) do |location, marker|
+      marker.lat location.latitude
+      marker.lng location.longitude
+      marker.infowindow render_to_string(:partial => "infowindow", :locals => { :object => location})
+      marker.json({ :address => location.address.split(',').first })
+    end 
+    end
+
+  end
+
+  def search
+    @geo =  Geocoder.search(params[:address])
+    respond_to do |format|
+      format.json { render json: @geo }
+    end 
+  end
+
+  # GET /users/1
+  # GET /users/1.json
+  def show
+    @location = Location.find(params[:id])
+    
+    @hash = Gmaps4rails.build_markers(@location) do |location, marker|
+      marker.lat location.latitude
+      marker.lng location.longitude
+    end
+
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @location }
+    end
+  end
+
+  # GET /users/new
+  # GET /users/new.json
+  def new
+    @location = Location.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @location }
+    end
+  end
+
+  # GET /users/1/edit
+  def edit
+    @location = Location.find(params[:id])
+  end
+
+  # POST /users
+  # POST /users.json
+  def create
+    @location = Location.new(location_params)
+
+    respond_to do |format|
+      if @location.save
+        format.html { redirect_to @location, notice: 'Location was successfully created.' }
+        format.json { render json: @location, status: :created, location: @location }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @location.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /users/1
+  # PUT /users/1.json
+  def update
+    @location = Location.find(params[:id])
+
+    respond_to do |format|
+      if @location.update_attributes(location_params)
+        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @location.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /users/1
+  # DELETE /users/1.json
+  def destroy
+    @location = Location.find(params[:id])
+    @location.destroy
+
+    respond_to do |format|
+      format.html { redirect_to locations_url }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+
+  def location_params
+    params.require(:location).permit(:address, :description, :latitude, :longitude)
+  end
+
+end
