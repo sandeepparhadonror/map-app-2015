@@ -1,7 +1,5 @@
 class LocationsController < ApplicationController
-  # GET /users
-  # GET /users.json 
-
+  
   def index
     # if user enter location search near location w.r.t user location
     if params[:address].present?
@@ -36,8 +34,7 @@ class LocationsController < ApplicationController
     end 
   end
 
-  # GET /users/1
-  # GET /users/1.json
+  
   def show
     @location = Location.find(params[:id])
     
@@ -53,8 +50,7 @@ class LocationsController < ApplicationController
     end
   end
 
-  # GET /users/new
-  # GET /users/new.json
+ 
   def new
     @location = Location.new
 
@@ -64,13 +60,12 @@ class LocationsController < ApplicationController
     end
   end
 
-  # GET /users/1/edit
+
   def edit
     @location = Location.find(params[:id])
   end
 
-  # POST /users
-  # POST /users.json
+ 
   def create
     @location = Location.new(location_params)
 
@@ -85,8 +80,6 @@ class LocationsController < ApplicationController
     end
   end
 
-  # PUT /users/1
-  # PUT /users/1.json
   def update
     @location = Location.find(params[:id])
 
@@ -101,8 +94,7 @@ class LocationsController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
+ 
   def destroy
     @location = Location.find(params[:id])
     @location.destroy
