@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   match 'index', to: 'locations#index', via: [:post, :get]
   resources :locations
   root 'locations#index'
