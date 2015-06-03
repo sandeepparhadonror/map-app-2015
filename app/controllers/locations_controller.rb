@@ -1,5 +1,8 @@
 class LocationsController < ApplicationController
   
+
+  before_filter :authenticate_user! , :only => [:create, :update, :destroy] 
+
   def index
     # if user enter location search near location w.r.t user location
     if params[:address].present?
