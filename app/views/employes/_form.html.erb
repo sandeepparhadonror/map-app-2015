@@ -1,0 +1,117 @@
+<%= form_for @employe, :html => { :class => "form-inline" } do |f|  %>
+  <%= render 'error_message' %>
+  
+  <!--   
+  <div class="form-group">
+    <label for="exampleInputName2">Name</label>
+    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail2">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputName2">Name</label>
+    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+  </div>
+ -->
+  
+  <div class="employe_name">
+    <div class="form-group f_name">
+      <%= f.label :f_name, 'First_Name : '%>
+      <%= f.text_field :f_name, :class => "form-control", :placeholder => "first_name" %>
+    </div><h7>&nbsp;</h7><h7>&nbsp;</h7><h7>&nbsp;</h7>
+    <div class="form-group">
+      <%= f.label :m_name, 'Middle_Name : ' %>
+      <%= f.text_field :m_name, :class => "form-control", :placeholder => "middle_name" %>
+    </div><h7>&nbsp;</h7><h7>&nbsp;</h7><h7>&nbsp;</h7>
+    <div class="form-group">
+      <%= f.label :l_name, 'Last_Name :' %>
+      <%= f.text_field :l_name, :class => "form-control", :placeholder => "first_name" %>
+    </div>
+  </div><br>
+
+  <div class="employe_date_detail">
+    <div class="form-group f_name">
+      <%= f.label :employe_dob, 'Birth_Date :' %>
+      <%= f.text_field :employe_dob, :class => "form-control" %>
+    </div><h7>&nbsp;</h7><h7>&nbsp;</h7><h7>&nbsp;</h7>
+
+    <div class="form-group">
+      <%= f.label :employe_join_date, 'Comp_join_date :' %>
+      <%= f.text_field :employe_join_date, :class => "form-control" %>
+    </div><h7>&nbsp;</h7><h7>&nbsp;</h7><h7>&nbsp;</h7>
+
+    <div class="form-group">
+      <%= f.label :employe_end_date, 'Comp_last_date :' %>
+      <%= f.text_field :employe_end_date, :class => "form-control" %>
+    </div>
+  </div><br>
+
+
+  <div class="employe_email_role_deparment">
+    <div class="form-group f_name">
+      <%= f.label :employe_email_address, 'Email_addr :' %>
+      <%= f.text_field :employe_email_address, :class => "form-control" %>
+    </div><h7>&nbsp;</h7><h7>&nbsp;</h7><h7>&nbsp;</h7>
+
+    <div class="form-group">
+      <%= f.label :employe_work_role, 'Work_Role :' %>
+      <%= f.text_field :employe_work_role, :class => "form-control" %>
+    </div><h7>&nbsp;</h7><h7>&nbsp;</h7><h7>&nbsp;</h7>
+
+    <div class="form-group">
+      <%= f.label :employe_deparment, 'Deparment :' %>
+      <%= f.text_field :employe_deparment, :class => "form-control" %>
+    </div>
+  </div><br>
+
+
+  <div class="employe_adress_background_detail">
+    <div class="form-group f_name">
+      <%= f.label :employe_adress, 'Employe_Adress :' %>
+      <%= f.text_area :employe_adress, :class => "form-control" %>
+    </div><h7>&nbsp;</h7><h7>&nbsp;</h7><h7>&nbsp;</h7>
+    <div class="form-group">
+      <%= f.label :employe_background_info, 'Employe_Background_Info :' %>
+      <%= f.text_area :employe_background_info, :class => "form-control" %>
+    </div>	
+  </div><br>
+
+
+  <div class="employe_vehicle_work_exp">
+    <div class="form-group f_name">
+      <%= f.label :employe_vehicle_no, 'Employe_Vehicle :' %>
+      <%= f.text_field :employe_vehicle_no, :class => "form-control" %>
+    </div><h7>&nbsp;</h7><h7>&nbsp;</h7><h7>&nbsp;</h7>
+    <div class="form-group">
+      <%= f.label :employe_work_expriance, 'Employe_Work_Exp :' %>
+      <%= f.text_field :employe_work_expriance, :class => "form-control" %>
+    </div>	
+  </div><br>
+
+
+
+
+  <div class="employe_gender_mob">
+    <div class="form-group f_name">
+      <%= f.label :employe_gender, 'Gender'%>
+  	  <%= f.select :employe_gender, Employe::GENDER_TYPES, :class => "form-control" %>
+    </div><h7>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h7>
+
+    <div class="form-group">
+      <%= f.label :employe_mob_no, 'Mobile_No : '%>
+      <%= f.telephone_field :employe_mob_no, :class => "form-control", :placeholder => "mob_no" %>
+    </div>
+  </div><br>
+
+
+ 
+<% end %>
+
+<style type="text/css">
+    .f_name {
+      margin-left: 60px;	
+    }
+	
+</style>

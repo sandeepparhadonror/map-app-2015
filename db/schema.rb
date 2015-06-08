@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605084513) do
+ActiveRecord::Schema.define(version: 20150608122916) do
+
+  create_table "employes", force: true do |t|
+    t.string   "employe_name"
+    t.boolean  "employe_gender",          default: false
+    t.date     "employe_dob"
+    t.text     "employe_adress"
+    t.string   "employe_work_role"
+    t.date     "employe_join_date"
+    t.date     "employe_end_date"
+    t.string   "employe_deparment"
+    t.integer  "employe_mob_no"
+    t.string   "employe_vehicle_no"
+    t.integer  "employe_work_expriance"
+    t.string   "employe_picture"
+    t.string   "employe_email_address"
+    t.text     "employe_background_info"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "locations", force: true do |t|
     t.float    "latitude"

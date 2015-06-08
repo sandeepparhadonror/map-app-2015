@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   
   resources :users do
     resources :locations
+  end
+
+  resources :employes do
+    #match 'create_new_employe', to: 'employes#create_new_employe', via: [:post]
   end  
+  
 
  # match 'geolocation', to: 'users#geolocation', via: [:post, :get]
 
