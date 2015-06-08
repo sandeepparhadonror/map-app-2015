@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   match 'index', to: 'locations#index', via: [:post, :get]
   resources :locations
   root 'locations#index'
+  
+  resources :users do
+    resources :locations
+  end  
+
  # match 'geolocation', to: 'users#geolocation', via: [:post, :get]
 
   # The priority is based upon order of creation: first created -> highest priority.

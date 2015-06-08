@@ -55,7 +55,7 @@ class LocationsController < ApplicationController
 
  
   def new
-    @location = Location.new
+    @location = current_user.locations.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -70,7 +70,9 @@ class LocationsController < ApplicationController
 
  
   def create
-    @location = Location.new(location_params)
+    #@location = Location.new(location_params)
+    @location = current_user.locations.build(location_params)
+    p @location
 
     respond_to do |format|
       if @location.save
@@ -85,9 +87,11 @@ class LocationsController < ApplicationController
 
   def update
     @location = Location.find(params[:id])
-
+    @location.user_id = current_user.id
+    p @location
     respond_to do |format|
       if @location.update_attributes(location_params)
+
         format.html { redirect_to @location, notice: 'Location was successfully updated.' }
         format.json { head :no_content }
       else
