@@ -3,13 +3,23 @@ class EmployesController < ApplicationController
 	  @employe = Employe.all
 	end
     
+    def show
+      @employe = Employe.find(params[:id])	
+    end
 
     def new
       @employe = Employe.new	
     end
 
     def create
-      @employe = Employe.new(employe_params)	
+      @employe = Employe.new(employe_params)
+      respond_to do |format|
+      	if @employe.save
+      	  format.html { redirect_to @employe, notice: "Employe created" }	
+      	else
+      	  format.html { render action: "new"}	
+      	end
+      end	
     end
 	
 	private
