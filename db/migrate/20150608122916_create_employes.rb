@@ -3,9 +3,9 @@ class CreateEmployes < ActiveRecord::Migration
     create_table :employes do |t|
       
       t.string   :employe_name
-      t.string   :employe_gender
+      t.boolean  :employe_gender, default: false
       t.date     :employe_dob
-      t.text	 :employe_adress
+      t.text	   :employe_adress
       t.string   :employe_work_role
       t.date     :employe_join_date
       t.date     :employe_end_date
