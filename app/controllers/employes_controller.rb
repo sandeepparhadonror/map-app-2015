@@ -1,4 +1,7 @@
 class EmployesController < ApplicationController
+
+  #before_action :full_employe_name
+
 	def index
 	  @employe = Employe.all
 	end
@@ -24,9 +27,16 @@ class EmployesController < ApplicationController
 	
 	private
 
+  
 	def employe_params
+    f_name = params[:employe][:f_name]
+    m_name = params[:employe][:m_name]
+    l_name = params[:employe][:l_name]
+    full_name = f_name.concat(m_name).concat(l_name)
+    params[:employe][:employe_name] = full_name
+    
 	  params.require(:employe)
-	        .permit(:employe_name, :employe_gender, :employe_dob, :employe_adress, :employe_work_role, 
+	        .permit(:f_name, :m_name, :l_name, :employe_name, :employe_gender, :employe_dob, :employe_adress, :employe_work_role, 
                     :employe_join_date, :employe_end_date, :employe_deparment, :employe_mob_no, 
                     :employe_vehicle_no, :employe_work_expriance, :employe_picture, 
                     :employe_email_address, :employe_background_info)	
