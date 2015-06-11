@@ -36,17 +36,17 @@
   <div class="employe_email_role_deparment">
     <div class="form-group f_name">
       <%= f.label :employe_email_address, 'Email_addr :' %>
-      <%= f.text_field :employe_email_address, :class => "form-control" %>
+      <%= f.email_field :employe_email_address, :class => "form-control", :placeholder => "Ex: abcemail@gmail.com" %>
     </div><h7>&nbsp;</h7><h7>&nbsp;</h7><h7>&nbsp;</h7>
 
     <div class="form-group">
       <%= f.label :employe_work_role, 'Work_Role :' %>
-      <%= f.text_field :employe_work_role, :class => "form-control" %>
+      <%= f.select :employe_work_role, Employe::EMPLOYE_ROLE, :class => "form-control" %>
     </div><h7>&nbsp;</h7><h7>&nbsp;</h7><h7>&nbsp;</h7>
 
     <div class="form-group">
       <%= f.label :employe_deparment, 'Deparment :' %>
-      <%= f.text_field :employe_deparment, :class => "form-control" %>
+      <%= f.select :employe_deparment, Employe::EMPLOYE_DEPT, :class => "form-control" %>
     </div>
   </div><br>
 
@@ -64,12 +64,12 @@
   <div class="employe_vehicle_work_exp">
     <div class="form-group f_name">
       <%= f.label :employe_vehicle_no, 'Employe_Vehicle :' %>
-      <%= f.text_field :employe_vehicle_no, :class => "form-control" %>
+      <%= f.text_field :employe_vehicle_no, :class => "form-control", :placeholder => "MH-12-BN-2705" %>
     </div><h7>&nbsp;</h7><h7>&nbsp;</h7><h7>&nbsp;</h7>
 
     <div class="form-group">
       <%= f.label :employe_work_expriance, 'Employe_Work_Exp :' %>
-      <%= f.text_field :employe_work_expriance, :class => "form-control" %>
+      <%= f.select :employe_work_expriance,  options_for_select(1..10), :class => "form-control" %>
     </div>	
   </div><br>
 
@@ -81,7 +81,7 @@
 
     <div class="form-group">
       <%= f.label :employe_mob_no, 'Mobile_No : '%>
-      <%= f.telephone_field :employe_mob_no, :class => "form-control", :placeholder => "mob_no" %>
+      <%= f.telephone_field :employe_mob_no, :class => "form-control", :placeholder => "9876543210" %>
     </div>
   </div><br>
   

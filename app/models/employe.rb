@@ -6,7 +6,11 @@ attr_accessor  :f_name, :m_name, :l_name
 #                :employe_vehicle_no, :employe_work_expriance, :employe_picture, 
 #                :employe_email_address, :employe_background_info
 
-GENDER_TYPES = [ ["Male","0"], [ "Female","1" ] ]
+GENDER_TYPES = [ ["Male","1"], [ "Female","0" ] ]
+EMPLOYE_ROLE = ["SeniorManager", "JuniorManager" "Supervisor", "Worker", "WatchMan"]
+EMPLOYE_DEPT = ["Mangement", "Finance", "Worker" ]
+
+validates_inclusion_of :employe_gender, in: [true, false]
 
 
 end
