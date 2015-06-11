@@ -20,9 +20,24 @@ class EmployesController < ApplicationController
       	if @employe.save
       	  format.html { redirect_to @employe, notice: "Employe created" }	
       	else
-      	  format.html { render action: "new"}	
+      	  format.html { render action: "new"}
       	end
       end	
+    end
+
+    def edit
+      @employe = Employe.find(params[:id])  
+    end
+
+    def update
+      @employe = Employe.find(params[:id])
+      respond_to do |format|
+        if @employe.update_attributes(employe_params)
+          format.html { redirect_to @employe, notice: "Employe successfully updated"}
+        else
+          format.html { render 'edit'}
+        end  
+      end  
     end
 	
 	private
