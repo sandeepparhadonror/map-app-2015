@@ -14,6 +14,7 @@ group :production do
 end
 
 gem 'devise'
+gem 'devise-guests'
 
 gem 'geocoder'
 gem 'gmaps4rails'

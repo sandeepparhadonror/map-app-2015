@@ -4,6 +4,7 @@ class EmployesController < ApplicationController
 
 	def index
 	  @employe = Employe.all
+    @user = User.all
 	end
     
     def show
