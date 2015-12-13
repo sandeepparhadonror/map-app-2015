@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
   
 
-  before_filter :authenticate_user! , :only => [:create, :update, :destroy] 
+  #before_filter :authenticate_user! , :only => [:new, :create, :update, :destroy] 
 
   def index
     # if user enter location search near location w.r.t user location
@@ -55,7 +55,7 @@ class LocationsController < ApplicationController
 
  
   def new
-    @location = current_user.locations.new
+    @location = current_or_guest_user.locations.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -71,7 +71,7 @@ class LocationsController < ApplicationController
  
   def create
     #@location = Location.new(location_params)
-    @location = current_user.locations.build(location_params)
+    @location = current_or_guest_user.locations.build(location_params)
     p @location
 
     respond_to do |format|
@@ -87,7 +87,7 @@ class LocationsController < ApplicationController
 
   def update
     @location = Location.find(params[:id])
-    @location.user_id = current_user.id
+    @location.user_id = current_or_guest_user.id
     p @location
     respond_to do |format|
       if @location.update_attributes(location_params)
