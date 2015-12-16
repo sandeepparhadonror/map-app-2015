@@ -2,7 +2,7 @@ module UserEmailFunctinality
   extend ActiveSupport::Concern
 
   included do
-  	after_create :send_welcome_email
+  	#after_create :send_welcome_email
   end
 
   def send_welcome_email
