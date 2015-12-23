@@ -1,6 +1,19 @@
 Rails.application.routes.draw do
 
+  # Shopping ccart application routes
+  namespace :shopping do
+    resources :products, only: [:index]
+    resource :cart, only: [:show]
+    resources :order_items, only: [:create, :update, :destroy]
+  end
+
+  # match "/products" => "shopping/products#index", :as=>"products", via: [:get, :post]
+
+
+  #Devise releted USer routes
   devise_for :users
+
+  #Map application Routes
   match 'index', to: 'locations#index', via: [:post, :get]
   resources :locations
   root 'locations#index'
