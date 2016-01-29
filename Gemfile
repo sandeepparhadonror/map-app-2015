@@ -24,6 +24,10 @@ gem 'devise-guests'  # gor guest user can add location
 gem 'geocoder'
 gem 'gmaps4rails'
 
+
+gem 'carrierwave'   # image attcheement or uploading
+gem "mini_magick"   # image croping
+
 # datatable pagination 
 gem 'jquery-datatables-rails', '~> 3.1.1'
 
