@@ -17,7 +17,7 @@
 //= require bootstrap-sprockets
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
-//= require underscore-min
+//= require underscore-min.map
 //= require gmaps/google
 //= jquery.geocomplete.min
 //= require_tree .
