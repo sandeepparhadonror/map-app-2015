@@ -26,3 +26,18 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+Table : User , Employ, Company , Client , Account
+
+user has many location
+
+
+employ has one  mony_account 
+
+company has many employ 
+
+Company has many clients 
+
+client has one mony_account
+
+
