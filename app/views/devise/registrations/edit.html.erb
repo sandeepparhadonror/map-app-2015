@@ -8,11 +8,6 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
-   <div class="field">
-    <%= f.label :profile_image %><br />
-    <%= image_tag current_user.profile_image.url(:thumb) %>
-  </div>
-
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

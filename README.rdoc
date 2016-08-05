@@ -31,13 +31,10 @@ Table : User , Employ, Company , Client , Account
 
 user has many location
 
+employ has one  many_account
 
-employ has one  mony_account 
+company has many employ
 
-company has many employ 
-
-Company has many clients 
+Company has many clients
 
 client has one mony_account
-
-
