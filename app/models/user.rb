@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   include UserEmailFunctinality
 
   has_many :locations
+  has_one :picture, as: :imageable
 
   devise :database_authenticatable, :registerable, :timeoutable,
          :recoverable, :rememberable, :trackable, :validatable

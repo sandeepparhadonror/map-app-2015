@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  # get 'picture/new'
+  #
+  # get 'picture/create'
+  #
+  # get 'picture/edit'
+  #
+  # get 'picture/update'
+  #
   # Shopping ccart application routes
   namespace :shopping do
     resources :products, only: [:index]
@@ -15,17 +23,20 @@ Rails.application.routes.draw do
 
   #Map application Routes
   match 'index', to: 'locations#index', via: [:post, :get]
-  resources :locations
-  root 'locations#index'
-  
+  resources :locations do
+    resources :picture, only: [:new, :create, :edit, :update]
+  end
+
   resources :users do
     resources :locations
+    resources :picture, only: [:new, :create, :edit, :update]
   end
 
   resources :employes do
     #match 'create_new_employe', to: 'employes#create_new_employe', via: [:post]
-  end  
-  
+  end
+
+  root 'locations#index'
 
  # match 'geolocation', to: 'users#geolocation', via: [:post, :get]
 

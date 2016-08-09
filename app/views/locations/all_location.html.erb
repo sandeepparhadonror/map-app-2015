@@ -5,16 +5,16 @@
       	<th>User Name</th>
       	<th>User Email</th>
       	<th>User Location</th>
-      </tr>	
+      </tr>
     </thead>
-    
+
     <tbody>
-      <% @user.each do |user| %> 
+      <% @user.each do |user| %>
         <tr>
           <td><%= user.name %></td>
           <td><%= user.email %></td>
-          <td><%= user.location %></td>	
-        </tr>   
+          <td><%= user.location %></td>
+        </tr>
       <% end %>
     </tbody>
   </table>

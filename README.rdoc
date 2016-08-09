@@ -29,6 +29,7 @@ Please feel free to use a different markup language if you do not plan to run
 
 Table : User , Employ, Company , Client , Account
 
+========
 user has many location
 
 employ has one  many_account
@@ -38,3 +39,9 @@ company has many employ
 Company has many clients
 
 client has one mony_account
+
+==============
+a. Polymorphisum :
+  1 .  location and picture : done
+  2 .  user and picture : inprogress
+  

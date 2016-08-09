@@ -1,27 +1,64 @@
 
-<p>
-  <b>Latitude:</b>
-  <%= @location.latitude %>
-</p>
-
-<p>
-  <b>Longitude:</b>
-  <%= @location.longitude %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= @location.address %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @location.description %>
-</p>
+<h3 class="text-center"><%= @location.address -%> </h3>
 
 
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<div class="well">
+
+  <div  id="location-show">
+    <table class="table table-bordered table-striped" >
+      <thead>
+        <tr>
+          <th>Latitude</th>
+          <th>Latitude</th>
+          <th>Address</th>
+          <th>Description</th>
+          <th>Update Picture</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td><%= @location.latitude %></td>
+          <td><%= @location.longitude %></td>
+          <td><%= @location.address %></td>
+          <td><%= @location.description %></td>
+          <td><%= link_to "Edit Location", edit_location_path(@location), class:"btn btn-default" %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div  id="loc-pic-opration-button">
+    <%= link_to "Add New Picture", new_location_picture_path(@location), class: "btn btn-default" -%>
+    <%= link_to 'Back To List Of Location', locations_path, class:"btn btn-default" %>
+  </div>
+
+</div>
 
 
-<%= render partial: 'gmap4rails' %>
+
+<hr>
+
+<div class="location-picture-show">
+  <div id="location-map">
+    <%= render partial: 'gmap4rails' %>
+  </div>
+  <div id="location-pictures-details" class="text-left">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Picture Name</th>
+          <th>Edit Picture</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @location.pictures.each do |picture| %>
+        <tr>
+          <td><%= picture.name%></td>
+          <td><%= link_to "Edit Picture", edit_location_picture_path(@location, picture), class: "btn btn-primary"%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
