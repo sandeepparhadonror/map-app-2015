@@ -1,10 +1,9 @@
 
-<h3 class="text-center"><%= @location.address -%> </h3>
+<h2 class="text-center"><%= @location.address -%> </h2>
 
+<div class="well row">
 
-<div class="well">
-
-  <div  id="location-show">
+  <div class="col-md-8" id="location-show">
     <table class="table table-bordered table-striped" >
       <thead>
         <tr>
@@ -28,22 +27,21 @@
     </table>
   </div>
 
-  <div  id="loc-pic-opration-button">
+  <div class="col-md-4" id="loc-pic-opration-button">
     <%= link_to "Add New Picture", new_location_picture_path(@location), class: "btn btn-default" -%>
     <%= link_to 'Back To List Of Location', locations_path, class:"btn btn-default" %>
   </div>
 
 </div>
 
-
-
 <hr>
 
 <div class="location-picture-show">
-  <div id="location-map">
+  <div class="col-md-8" id="location-map">
     <%= render partial: 'gmap4rails' %>
   </div>
-  <div id="location-pictures-details" class="text-left">
+
+  <div id="location-pictures-details" class="col-md-4">
     <table class="table table-bordered table-striped">
       <thead>
         <tr>

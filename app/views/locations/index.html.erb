@@ -28,7 +28,7 @@
     <label for="distance">Distance Area : </label>
     <%= text_field_tag :distance, params[:distance], :class => "form-control", :placeholder => "distance in Km" %>
   </div>
-  
+
   <%= submit_tag "Search" , :class =>"btn btn-primary", :id => "button_reset" %>
 <% end %>
 
@@ -36,15 +36,14 @@
 
 <div class="row">
 
-  <div class="col-md-8">
-    <%= render partial: 'gmap4rails' %> 
+  <div class="col-md-7">
+    <%= render partial: 'gmap4rails' %>
   </div>
-  <p class="text-center col-md-4"> The List of Location</p>
-  <div id='sidebar_container' class="col-md-4 text-center"> 
+
+  <div class="text-center col-md-5">
+    <h3> The List of Location</h3>
+    <div id='sidebar_container'></div>
+
   </div>
 
 </div>
-
-
-
-
