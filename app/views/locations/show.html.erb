@@ -46,14 +46,16 @@
       <thead>
         <tr>
           <th>Picture Name</th>
-          <th>Edit Picture</th>
+          <th>Action On Picture</th>
+
         </tr>
       </thead>
       <tbody>
         <% @location.pictures.each do |picture| %>
         <tr>
-          <td><%= picture.name%></td>
-          <td><%= link_to "Edit Picture", edit_location_picture_path(@location, picture), class: "btn btn-primary"%></td>
+          <td><%= image_tag(picture.name_url) if picture.name? %></td>
+          <td><%= link_to "Edit Picture", edit_location_picture_path(@location, picture), class: "btn btn-primary btn-sm" -%><hr>
+          <%= link_to "Delete Picture", location_picture_path(@location, picture) , method: :delete, data: {confirm: "Are you sure to delete #{picture.name} picture"} ,class: "btn btn-danger btn-sm"%></td>
         </tr>
         <% end %>
       </tbody>

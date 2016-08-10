@@ -1,7 +1,12 @@
 
   <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_area :name %>
+    <%= f.file_field :name %>
+      <% if f.object.name? %>
+        <%= image_tag f.object.name.thumb.url %>
+        <%= f.label :remove_image %>
+        <%= f.check_box :remove_name %>
+      <% end %>
   </div>
 
   <%= f.submit class: "btn btn-primary" %>

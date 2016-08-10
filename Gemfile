@@ -16,7 +16,7 @@ gem 'geocoder'           # Location Lat and Lang and Map Purpose
 gem 'gmaps4rails'        # Display the map
 
 gem 'carrierwave'        # image attcheement or uploading
-gem "mini_magick"        # image croping
+gem "mini_magick"        # image croping and resizing
 
 gem 'bootstrap-sass', '~> 3.3.6'  # for Bootstrap dirtecly
 gem 'autoprefixer-rails'

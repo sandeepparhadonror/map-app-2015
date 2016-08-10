@@ -38,6 +38,16 @@ class PictureController < ApplicationController
         format.json { render json: @picture.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def destroy
+    picture = Picture.find(params[:id])
+    picture.destroy
+
+    respond_to do |format|
+      format.html { redirect_to picture_parent_data }
+      format.json { head :no_content }
+    end
 
   end
 

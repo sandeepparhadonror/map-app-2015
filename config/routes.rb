@@ -24,12 +24,12 @@ Rails.application.routes.draw do
   #Map application Routes
   match 'index', to: 'locations#index', via: [:post, :get]
   resources :locations do
-    resources :picture, only: [:new, :create, :edit, :update]
+    resources :picture, only: [:new, :create, :edit, :update, :destroy]
   end
 
   resources :users do
     resources :locations
-    resources :picture, only: [:new, :create, :edit, :update]
+    resources :picture, only: [:new, :create, :edit, :update, :destroy]
   end
 
   resources :employes do
